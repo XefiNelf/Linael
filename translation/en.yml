@@ -321,6 +321,8 @@ message:
   kick:    "%1 kicked %2 from %3 for reason: %4"
   invite:  "%1 invited %2 on %3"
   server:  "%1 %2 %3: %4"
+  topic:   "%1 changed the topic of %2 to: %3"
+  topic_server:   "Topic of %1 is: %2"
 
 tell:
   help:

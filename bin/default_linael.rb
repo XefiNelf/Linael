@@ -31,9 +31,9 @@ module Linael
   # The connection port
   Port = 6667
   # Nick of the bot
-  BotNick = 'Linael'
+  BotNick = 'Piu'
   # Name of master user
-  Master = 'zaratan'
+  Master = 'xefi'
 
   # Char that will be used for commands
   CmdChar = '!'

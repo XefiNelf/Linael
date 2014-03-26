@@ -11,6 +11,8 @@ module Linael::Irc
       Linael::Irc::Kick,
       Linael::Irc::Invite,
       Linael::Irc::Quit,
+      Linael::Irc::Topic,
+      Linael::Irc::TopicServer,
       Linael::Irc::Server,
       Linael::Irc::Ping
     ]

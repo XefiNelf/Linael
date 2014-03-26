@@ -9,8 +9,8 @@ module Linael
   #The server to join
   ServerAddress = 'irc.rizon.net'
   #Nick of the bot
-  BotNick = 'LinaelTest'
-  Master = 'zaratan'
+  BotNick = 'Piu'
+  Master = 'xefi'
 
   Core::start_linael do
     Core::start_server :irc, master_module: MasterModule, modules: ModulesToLoad, name: "rizon", url: ServerAddress, nick: BotNick, port: Port

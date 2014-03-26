@@ -6,6 +6,7 @@ module Linael
     include Singleton
 
     def handle message
+      p message
       begin
         message.element = format_message message
         self.class.to_do.detect{|m| self.send(m,message)}
@@ -31,7 +32,7 @@ module Linael
 
     
     def self.add_act (klass)
-      klass_name = klass.name.gsub(/.*:/,"").downcase
+      klass_name = klass.name.gsub(/.*:/,"").underscore
       attr_accessor "#{klass_name}_act".to_sym
       define_method "handle_#{klass_name}" do |message|
         if klass.match?(message.element)
@@ -62,7 +63,7 @@ module Linael
 
     def initialize
       self.class.create_handle
-      self.class.to_handle.each {|klass| instance_variable_set "@#{klass.name.gsub(/.*:/,"").downcase}_act",{}}
+      self.class.to_handle.each {|klass| instance_variable_set "@#{klass.name.gsub(/.*:/,"").underscore}_act",{}}
     end
 
     def configure options

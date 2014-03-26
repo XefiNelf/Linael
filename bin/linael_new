@@ -9,13 +9,13 @@ module Linael
   #You are not obliged to use every options this is the default configuration
 
   #The server adress to join
-  ServerAddress = ''
+  ServerAddress = 'irc.rizon.fr'
   #The connection port
   Port = 6667
   #Nick of the bot
-  BotNick = 'Linael'
+  BotNick = 'Piu'
   #Name of master user (downcase)
-  Master = 'zaratan'
+  Master = 'xefi'
   
   # Char that will be used for commands
   CmdChar = '!'

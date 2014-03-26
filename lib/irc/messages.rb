@@ -128,6 +128,10 @@ module Linael::Irc
       /:(?<sender_r>\S*)\s+(?<code_r>\d*)\s+(?<location_r>[^:]*):(?<content_r>[^\n]*)/
     end
 
+    def self.server_302_regex
+       /:(?<sender_r>\S*)\s+(?<code_r>332)\s+\S+\s+(?<location_r>[^:]*)\s+:(?<content_r>[^\n]*)/
+    end
+
   end
 
   
@@ -139,8 +143,9 @@ module Linael::Irc
   kick_regex=/\A#{UserLocatedMessage::UserRegex}\sKICK\s#{UserLocatedMessage::LocationRegex}\s#{UserLocatedMessage::TargetRegex}\s#{UserLocatedMessage::ContentRegex}/
   #Unregular Regex for invite 
   invite_regex=/\A#{UserLocatedMessage::UserRegex}\sINVITE\s#{UserLocatedMessage::TargetRegex}\s:#{UserLocatedMessage::LocationRegex}/
-
-
+  #Unregular Regex for topic 
+  topic_regex=/\A#{UserLocatedMessage::UserRegex}\sTOPIC\s#{UserLocatedMessage::LocationRegex}\s#{UserLocatedMessage::ContentRegex}/
+ 
   Message.generate_message_class :join, LocatedMessage, join_regex do
     def to_s
       t.message.join print_user, location
@@ -200,6 +205,18 @@ module Linael::Irc
   Message.generate_message_class :invite, UserLocatedMessage, invite_regex do
     def to_s
       t.message.invite print_user, target, location
+    end
+  end
+
+  Message.generate_message_class :topic, UserLocatedMessage, topic_regex do
+    def to_s
+      t.message.topic print_user, location, content
+    end
+  end
+
+  Message.generate_message_class :topic_server, NumberedMessage, NumberedMessage.server_302_regex do
+    def to_s
+      t.message.topic_server location, content
     end
   end
 
